@@ -22,3 +22,5 @@ let menu = document.getElementById("menu");
 botaoMenu.classList.toggle("click", () => {
     menu.classList.toggle(Ativo);
 })
+
+
