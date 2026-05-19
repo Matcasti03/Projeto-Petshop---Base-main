@@ -8,6 +8,25 @@
   --radius: 20px;
 }
 
+/* 🌙 CONFIGURAÇÃO DO MODO ESCURO */
+body.dark-mode {
+  --escuro: #ffffff;    /* O que era preto vira branco */
+  --claro: #1e293b;     /* O que era branco vira azul escuro/cinza */
+  --texto: #f1f5f9;     /* Texto fica claro para dar leitura */
+}
+
+/* Altera o fundo com imagem para tons escuros quando o modo escuro estiver ativo */
+body.dark-mode {
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)),
+    url("../img/fundo.png");
+}
+
+/* Altera o fundo do header no modo escuro */
+body.dark-mode header {
+  background: rgba(30, 41, 59, 0.85);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +46,7 @@ body {
 
   background-attachment: fixed;
   background-size: 500px;
+  transition: background 0.3s ease, color 0.3s ease; /* Transição suave ao trocar de tema */
 }
 
 /* HEADER */
@@ -41,8 +61,27 @@ header {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
 }
+
+/* Estilo do novo botão de alternar tema */
+#theme-toggle {
+  padding: 10px 15px;
+  background: var(--primaria);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  background: var(--secundaria);
+}
+
 .logo {
 }
 
@@ -134,13 +173,13 @@ nav a:hover {
 }
 
 .card {
-  background: #f097ef(201, 142, 216, 0.8);
+  background: var(--claro); /* Ajustado para usar a variável dinâmica */
   border-radius: var(--radius);
   box-shadow: var(--sombra);
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transform: 0.4s;
+  transition: 0.4s;
 }
 .card:hover {
   transform: translateY(-12px);
@@ -172,14 +211,13 @@ gap: 16px;
   height: 190px;
   object-fit: cover;
   border-radius: var(--radius);
-  box-shadow: var (--sombra);
+  box-shadow: var(--sombra);
   transition: 0.4s;
-
 }
 .galeria img:hover{
   transform: scale(1.05);
-
 }
+
 /*form*/
 form{
   max-width: 700px;
@@ -199,6 +237,8 @@ input, textarea{
   border: 2px solid #e2e8f0;
   border-radius: 12px;
   font-size: 16px;
+  background: var(--claro);
+  color: var(--texto);
 }
 input:focus, textarea:focus{
   outline:none;
@@ -221,22 +261,12 @@ button:hover{
 
 footer{
   background: var(--secundaria);
-  color: var(--primaria);
+  color: var(--claro); /* Ajustado para melhor contraste */
   text-align: center;
   padding: 50px 20px;
-  margin-top: 60px
-  <stile>
-  html, body { 
-    height:100%;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  .container {
-    flex: 1;
-  }
+  margin-top: 60px;
 }
+
 /*Mapa*/
 iframe{
   width: 100%;
@@ -245,11 +275,11 @@ iframe{
   border-radius: 25px;
   box-shadow: var(--sombra);
 }
+
 /*Responsividade Celular*/
 @media (max-width: 768px) {
   #menu-btn {
     display: block;
-    
   }
 
   nav{
@@ -269,7 +299,6 @@ iframe{
   }
   .hero h1 {
     font-size: 38px;
-    
   }
   h2{
     font-size: 24px;
@@ -279,9 +308,11 @@ iframe{
     justify-content: center;
   }
 }
+
 /*responsividade tablet*/
 @media (min-width: 768px) and (max-width: 1200px){
-  }
+}
+
 .redes-sociais {
   margin-top: 10px;
 }
